@@ -1,5 +1,7 @@
 # Deck of Cards - Go
 
+https://play.golang.org/
+
 ## Language Types
 
 Go is a **statically typed language**.
@@ -45,4 +47,35 @@ var test = 5 ;
 test = 'string';
 
 ...
+```
+
+## Variable Declaration
+
+The most basic way to declare a variable in Go can be seen below. This way of declaring a variable can be done inside or outside of a function
+
+```go
+
+var card string = "Ace of Spades"
+
+```
+
+The shorthand of this can only be done inside of a function:
+
+```go
+
+func main() {
+  card := "Ace of Spades"
+}
+
+```
+
+You cannot reassign a variable to a different type. The below example would error:
+
+```go
+
+func main() {
+  card := "Ace of Spades"
+  card = 5 // error
+}
+
 ```
