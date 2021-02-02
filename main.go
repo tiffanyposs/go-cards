@@ -3,10 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	// var card string = "Ace of Spades"
-	// writing this way, the compiler
-	// understands that it will be a string
-	// only for new variables, not resetting
-	card := "Are of Spades"
-	fmt.Println(card)
+	cards := []string{"Ace of Diamonds", newCard()}
+	cards = append(cards, "Six of Spades")
+
+	for i, card := range cards {
+		fmt.Println(i, card)
+	}
+}
+
+// you must declare what type this function with return
+func newCard() string {
+	return "Five of Diamonds"
 }

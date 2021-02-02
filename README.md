@@ -79,3 +79,69 @@ func main() {
 }
 
 ```
+
+You have to declare what type a function returns
+
+```go
+
+func newCard() string {
+	return "Five of Diamonds"
+}
+
+```
+
+## Lists
+
+Go has two type of lists:
+
+* `array` - fixed length list of things
+* `slice` - an array that can shrink or grow
+
+
+### Slice
+
+Every element in a `slice` must be of the same type
+
+#### Declaring a Slice
+
+You must declare the type of the elements within a slice.
+
+```go
+
+func main() {
+  cards := []string{"Ace of Diamonds", "Six of Spades"}
+  ...
+}
+
+```
+
+#### Appending New Element
+
+You can use the `append` method to add a new element to the end of a `slice`.
+
+```go
+
+func main() {
+  cards := []string{"Ace of Diamonds", "Six of Spades"}
+  cards = append(cards, "King of Hearts")
+  ...
+}
+
+```
+
+#### Loops
+
+```go
+
+func main() {
+  cards := []string{"Ace of Diamonds", "Six of Spades"}
+  cards = append(cards, "King of Hearts")
+  for index, card := range cards {
+    // do stuff with index and card
+  }
+}
+
+```
+
+### Array
+
