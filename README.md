@@ -143,5 +143,31 @@ func main() {
 
 ```
 
-### Array
 
+## OO vs Go Approach
+
+### OO Approach
+
+* Declare a new type and set it to whatever existing type you like (slice of strings in this case)
+* add a method to the type `deck` called `print`, the receiver takes two variables: `d` which is similar to `this` in other languages and `deck` which is the type you're adding the method to. By convention the first variable is a 1 or 2 letter variable matching the second variable's starting letters.
+* Init an instance of the type, setting it to a variable, then you can access the methods.
+
+```go
+...
+
+type deck []string
+
+func (d deck) print() {
+	for i, card := range d {
+		fmt.Println(i, card)
+	}
+}
+
+...
+
+func main() {
+  cards := deck{"Ace of Diamonds", "Six of Spades"}
+  cards.print()
+}
+
+```
