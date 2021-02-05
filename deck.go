@@ -26,6 +26,12 @@ func newDeck() deck {
 	return cards
 }
 
+func (d deck) dealHand() deck {
+	hand := d[:4]
+	fmt.Println(hand)
+	return hand
+}
+
 // any variable with the type deck, gets a method named print
 // (d deck) syntax is called a receiver
 // a receiver sets up a method on variable we create

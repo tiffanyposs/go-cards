@@ -143,6 +143,20 @@ func main() {
 
 ```
 
+#### Accessing Indexes
+
+You can use syntax like `[0:2]` or `[1:4]` or `[:2]` or `[2:]` to access ranges of indexes. The first number is the starting position and is includes, the second number is the ending position and is not included.
+
+
+```go
+...
+
+cards := []string{"Ace of Diamonds", "Six of Spades", "Queen of Hearts"}
+
+hand := cards[:2] // would give me the cards indexes 0 through 1
+hand2 := cards[1:3] // would give me the cards indexes 1 through 2
+
+```
 
 ## OO vs Go Approach
 
