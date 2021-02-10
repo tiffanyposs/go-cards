@@ -208,3 +208,44 @@ func main() {
 }
 
 ```
+
+## Packages
+
+You can see available packages in Go here: https://golang.org/pkg/
+
+### Write File
+
+You can use the package `ioutil` to write files to your hard drive, specifically the WriteFile function https://golang.org/pkg/io/ioutil/#WriteFile
+
+* It takes a filename with type **string**
+* It takes data which is a **slice** of **bytes** (aka a "byte slice" in Go)
+* It also takes a perm (short for permissions)
+
+```go
+
+func WriteFile(filename string, data []byte, perm os.FileMode) error
+
+```
+
+### Byte slice
+
+A byte slice is a slice of numbers that coorispond to a string. For example the string `Hi there!` as a byte slice looks like this: `[72 105 32 116 104 101 114 101 33]`. This is just a computer fiendly way to write a string.
+
+You can see at http://www.asciitable.com/ a table that you can look up bytes to letters.
+
+
+
+### Type Conversion
+
+You can change a type in Go 
+
+`<type-you-want>(<value-you-have>)`
+
+This example will covert "Hello there!" into a **byte slice**:
+
+```go
+
+greeting := "Hi There!"
+greetingBytes := []byte(greeting)
+
+```
