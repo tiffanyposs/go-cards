@@ -26,10 +26,12 @@ func newDeck() deck {
 	return cards
 }
 
-func (d deck) dealHand() deck {
-	hand := d[:4]
-	fmt.Println(hand)
-	return hand
+// d deck - d is same as this, this instance of deck
+// handSize - argument passed in with type int
+// (deck, deck) - returns two things with type deck
+// return <x>, <y> - return two things
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:]
 }
 
 // any variable with the type deck, gets a method named print

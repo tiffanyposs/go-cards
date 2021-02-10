@@ -185,3 +185,26 @@ func main() {
 }
 
 ```
+
+## Functions
+
+* Has a receiver of `d` with type **deck**
+* Function takes one argument `handSize` with type **int**
+* It returns two things, both with type **deck**
+
+```go
+
+type deck []string
+
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:]
+}
+
+...
+
+func main() {
+  cards := newDeck()
+  hand, remainingDeck := deal(cards, 5)
+}
+
+```
