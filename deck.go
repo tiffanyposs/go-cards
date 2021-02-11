@@ -3,7 +3,10 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
+	"os"
 	"strings"
+	"time"
 )
 
 // Create a new type of deck
@@ -46,9 +49,10 @@ func deal(d deck, handSize int) (deck, deck) {
 // by convention, the first variable in a receiver is named with 1 or 2 letters that match
 // the first letters of the type it's extended, this is why we named this "d" instead of "cards"
 func (d deck) print() {
-	for _, card := range d {
-		fmt.Println(card)
+	for i, card := range d {
+		fmt.Println(i, card)
 	}
+	fmt.Println("-----------")
 }
 
 // takes a receiver of d deck, function named toString, returns a string
@@ -60,4 +64,35 @@ func (d deck) toString() string {
 // cards.saveToFile("my_cards")
 func (d deck) saveToFile(filename string) error {
 	return ioutil.WriteFile(filename, []byte(d.toString()), 0666) // 0666 - anyone can use this file
+}
+
+// reads a file on os
+func newDeckFromFile(filename string) deck {
+	bs, err := ioutil.ReadFile(filename)
+
+	// if there is an error, print error and exit program completely
+	if err != nil {
+		fmt.Println("Error: ", err)
+		os.Exit(1) // exit program by passing any number besides 0
+	}
+
+	s := strings.Split(string(bs), ",") // turn byte slice into a string and split it into a slice of strings
+	return deck(s)                      // convert it into a deck type
+}
+
+func (d deck) shuffle() {
+	// Go's rand.Intn is a pseudo random generator, so it's the same every time by default
+
+	// to create a true random number
+	// create a random number by using the current time
+	source := rand.NewSource(time.Now().UnixNano())
+	// create new random number generator
+	r := rand.New(source) // type Rand
+
+	for i := range d {
+		// rand.Intn(len(d) - 1) - not truely random, has same seed each time
+		// create random number with new Rand type we created
+		newPosition := r.Intn(len(d) - 1)
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
 }
