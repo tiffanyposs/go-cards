@@ -249,3 +249,7 @@ greeting := "Hi There!"
 greetingBytes := []byte(greeting)
 
 ```
+
+### Testing In Go
+
+Always end with `_test.go`
