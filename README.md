@@ -253,3 +253,31 @@ greetingBytes := []byte(greeting)
 ### Testing In Go
 
 Always end with `_test.go`
+
+The basic structure for Go testing is to 
+
+* Name a function that has a name of `Test<name-of-func-being-tested>`, this will make it easier to find
+* This is always called with the a param `t` with type of `*testing.T`
+* You call the method you'd like to test
+* setup conditionals that check expected behavior
+* Use the `t` param to to call an error with `t.Errorf`
+* Run `$ go test` OR use VSCode to run individual test in the code editor
+
+```go
+
+func TestNewDeck(t *testing.T) {
+	d := newDeck()
+	if len(d) != 52 {
+		t.Errorf("Expected deck length of 52, but got %v", len(d))
+	}
+
+	if d[0] != "Ace of Spades" {
+		t.Errorf("Expected Ace of Spades to be first, but got %v", d[0])
+	}
+
+	if d[len(d)-1] != "King of Clubs" {
+		t.Errorf("Expected King of Clubs ot be first, but got %v", d[len(d)-1])
+	}
+}
+
+```
